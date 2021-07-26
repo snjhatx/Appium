@@ -32,7 +32,7 @@ public class FirstAndroidTest {
     }
 
     @Test
-    public void click_App_Button() {
+    public void add_plant_test() {
         driver.findElementByAccessibilityId("Plant list").click();
         driver.findElementByAccessibilityId("My garden").click();
         WebDriverWait wait = new WebDriverWait(driver, 10);
