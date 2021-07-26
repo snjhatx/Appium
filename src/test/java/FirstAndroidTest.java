@@ -27,7 +27,7 @@ public class FirstAndroidTest {
         caps.setCapability("automationName", "UiAutomator2");
         caps.setCapability("platformVersion", "10");
         caps.setCapability("deviceName", "Android Emulator");
-        caps.setCapability("app", "/Users/moataz.eldebsy/sunflower/app/build/outputs/apk/debug/app-debug.apk");
+        caps.setCapability("app", System.getenv("BITRISE_APK_PATH "));
         driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), caps);
     }
 
