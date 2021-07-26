@@ -25,17 +25,22 @@ public class FirstAndroidTest {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platformName", "Android");
         caps.setCapability("automationName", "UiAutomator2");
-        caps.setCapability("platformVersion", "10");
+        caps.setCapability("platformVersion", "9");
         caps.setCapability("deviceName", "Android Emulator");
-        caps.setCapability("app", System.getenv("BITRISE_APK_PATH "));
+        caps.setCapability("app", System.getenv("BITRISE_APK_PATH"));
         driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), caps);
     }
 
     @Test
     public void add_plant_test() {
-        driver.findElementByAccessibilityId("Plant list").click();
-        driver.findElementByAccessibilityId("My garden").click();
         WebDriverWait wait = new WebDriverWait(driver, 10);
+
+        MobileElement plantList = (MobileElement) driver.findElementByAccessibilityId("Plant list");
+        MobileElement myGarden = (MobileElement) driver.findElementByAccessibilityId("My garden");
+
+        wait.until(ExpectedConditions.elementToBeClickable(plantList)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(myGarden)).click();
+
         wait.until(ExpectedConditions.presenceOfElementLocated(addPlant)).click();
         List <MobileElement> listElements = driver.findElements(By.id("plant_item_title"));
         for(MobileElement el : listElements){
