@@ -25,11 +25,15 @@ public class FirstAndroidTest {
     @BeforeTest
     public void setUp() throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
+       //caps.setCapability("app", "storage:filename=<file-name>.apk");
+       
         caps.setCapability("platformName", "Android");
         caps.setCapability("automationName", "UiAutomator2");
         caps.setCapability("platformVersion", "9");
         caps.setCapability("deviceName", "Android Emulator");
-        caps.setCapability("app", System.getenv("BITRISE_APK_PATH"));
+       //caps.setCapability("app", "storage:c8511dd6-38ec-4f58-b8b9-4ec8c23ad882");
+       caps.setCapability("app", "storage:3be7846c-37e7-4b19-bb74-c3483b7e185f");
+        //caps.setCapability("app", System.getenv("BITRISE_APK_PATH"));
         driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), caps);
     }
 
