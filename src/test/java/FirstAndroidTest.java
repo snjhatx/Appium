@@ -21,16 +21,24 @@ public class FirstAndroidTest {
     AppiumDriver driver;
     private static By addPlant = By.id("add_plant");
     private static By add = By.id("fab");
+   public String seleniumURI = "@ondemand.saucelabs.com:443";
 
     @BeforeTest
     public void setUp() throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platformName", "Android");
-        caps.setCapability("automationName", "UiAutomator2");
-        caps.setCapability("platformVersion", "9");
-        caps.setCapability("deviceName", "Android Emulator");
-        caps.setCapability("app", System.getenv("BITRISE_APK_PATH"));
-        driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), caps);
+        //caps.setCapability("automationName", "UiAutomator2");
+        caps.setCapability("platformVersion", "9.0");
+        caps.setCapability("deviceName", "Google Pixel 3");
+       // caps.setCapability("app", System.getenv("BITRISE_APK_PATH"));
+       capabilities.setCapability("app","storage:3be7846c-37e7-4b19-bb74-c3483b7e185f");
+       
+
+       // driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), caps);
+        androidDriver.set(new AndroidDriver(
+                new URL("https://" + "oauth-sneha.jha-4694f" + ":" + "84860a05-4919-42a2-8dc9-6bf70f55e8c4" + seleniumURI + "/wd/hub"),
+                capabilities));
+
     }
 
     @Test
